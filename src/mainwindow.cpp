@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     play_button->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
     pause_button->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
     stop_button->setIcon(style()->standardIcon(QStyle::SP_MediaStop));
+    connect(play_button, &QPushButton::clicked, this, &MainWindow::on_play_button_clicked);
+    connect(pause_button, &QPushButton::clicked, this, &MainWindow::on_pause_button_clicked);
+    connect(stop_button, &QPushButton::clicked, this, &MainWindow::on_stop_button_clicked);
 
     // Add widgets to the window
     auto buttons_layout = new QHBoxLayout();
@@ -30,4 +33,22 @@ MainWindow::MainWindow(QWidget *parent)
     auto main_widget = new QWidget();
     main_widget->setLayout(main_layout);
     setCentralWidget(main_widget);
+}
+
+
+void MainWindow::on_play_button_clicked()
+{
+    qDebug() << "Play";
+}
+
+
+void MainWindow::on_pause_button_clicked()
+{
+    qDebug() << "Pause";
+}
+
+
+void MainWindow::on_stop_button_clicked()
+{
+    qDebug() << "Stop";
 }
