@@ -5,11 +5,13 @@
 #include <QLayout>
 #include <QStyle>
 
+static const int MAX_VALUE = 100;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     // Create widgets
-    auto chart_view = new ChartView();
+    auto chart_view = new ChartView(MAX_VALUE);
     auto play_button = new QPushButton();
     auto pause_button = new QPushButton();
     auto stop_button = new QPushButton();
@@ -37,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(main_widget);
 
     // Create a points generating thread
-    points_generator = new PointsGenerator(this);
+    points_generator = new PointsGenerator(MAX_VALUE, this);
     connect(points_generator, &PointsGenerator::generated, chart_view, &ChartView::update);
 }
 

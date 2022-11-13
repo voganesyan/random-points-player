@@ -1,10 +1,18 @@
 #include "chartview.h"
 #include <QtCharts/QScatterSeries>
+#include <QValueAxis>
 
-ChartView::ChartView(QWidget *parent) :
+ChartView::ChartView(int max_value, QWidget *parent) :
     QChartView(new QChart(), parent)
 {
     setRenderHint(QPainter::Antialiasing);
+
+    auto axis_x = new QValueAxis();
+    auto axis_y = new QValueAxis();
+    axis_x->setMax(max_value);
+    axis_y->setMax(max_value);
+    chart()->addAxis(axis_x, Qt::AlignBottom);
+    chart()->addAxis(axis_y, Qt::AlignLeft);
 }
 
 
@@ -16,7 +24,6 @@ void ChartView::update(const QList<QPointF> &points)
     series->append(points);
     chart()->removeAllSeries();
     chart()->addSeries(series);
-    chart()->createDefaultAxes();
 }
 
 

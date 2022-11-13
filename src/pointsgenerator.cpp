@@ -3,7 +3,6 @@
 #include <QDebug>
 
 static const int LIST_SIZE = 10;
-static const int MAX_NUM = 100;
 static const int SLEEP_TIME_MS = 500;
 
 
@@ -19,8 +18,8 @@ void PointsGenerator::run()
         }
         QList<QPointF> points;
         for (int i = 0; i < LIST_SIZE; i++) {
-            int x = std::rand() % MAX_NUM;
-            int y = std::rand() % MAX_NUM;
+            int x = std::rand() % max_value;
+            int y = std::rand() % max_value;
             points << QPointF(x, y);
         }
         emit generated(points);

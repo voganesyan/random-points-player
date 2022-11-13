@@ -8,7 +8,8 @@ class PointsGenerator : public QThread
 {
     Q_OBJECT
 public:
-    PointsGenerator(QObject *parent = nullptr) : QThread(parent) {};
+    PointsGenerator(int max_value, QObject *parent = nullptr) :
+        max_value(max_value), QThread(parent) {};
     void run() override;
     void pause();
     void resume();
@@ -18,4 +19,5 @@ signals:
 
 protected:
     std::atomic_bool is_paused = false;
+    int max_value;
 };
