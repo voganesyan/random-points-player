@@ -19,7 +19,6 @@ ChartView::ChartView(int max_value, QWidget *parent) :
 
 void ChartView::update(const QList<QPointF> &points)
 {
-    qDebug() << "Update";
     auto series = new QScatterSeries();
     series->append(points);
     chart()->removeAllSeries();

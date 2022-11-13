@@ -1,6 +1,5 @@
 #include "pointsgenerator.h"
 #include <QMutexLocker>
-#include <QDebug>
 
 static const int LIST_SIZE = 10;
 static const int SLEEP_TIME_MS = 500;
@@ -24,7 +23,6 @@ void PointsGenerator::run()
         msleep(SLEEP_TIME_MS);
     }
     is_paused = false;
-    qDebug() << "Finish";
 }
 
 

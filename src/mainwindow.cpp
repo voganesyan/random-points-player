@@ -52,7 +52,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_play_button_clicked()
 {
-    qDebug() << "Play";
     if (points_generator->isRunning()) {
         points_generator->resume();
     } else {
@@ -64,7 +63,6 @@ void MainWindow::on_play_button_clicked()
 
 void MainWindow::on_pause_button_clicked()
 {
-    qDebug() << "Pause";
     points_generator->pause();
     set_play_button_enabled(true);
 }
@@ -72,7 +70,6 @@ void MainWindow::on_pause_button_clicked()
 
 void MainWindow::on_stop_button_clicked()
 {
-    qDebug() << "Stop";
     points_generator->quit();
     points_generator->requestInterruption();
     points_generator->wait();
