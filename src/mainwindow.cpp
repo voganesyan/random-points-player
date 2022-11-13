@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(play_button, &QPushButton::clicked, this, &MainWindow::on_play_button_clicked);
     connect(pause_button, &QPushButton::clicked, this, &MainWindow::on_pause_button_clicked);
     connect(stop_button, &QPushButton::clicked, this, &MainWindow::on_stop_button_clicked);
+    connect(stop_button, &QPushButton::clicked, chart_view, &ChartView::clear);
 
     // Add widgets to the window
     auto buttons_layout = new QHBoxLayout();
@@ -37,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Create a points generating thread
     points_generator = new PointsGenerator(this);
+    connect(points_generator, &PointsGenerator::generated, chart_view, &ChartView::update);
 }
 
 

@@ -4,14 +4,23 @@
 ChartView::ChartView(QWidget *parent) :
     QChartView(new QChart(), parent)
 {
-    QList<QPointF> points = {{2, 4}, {3, 8}, {7, 4}};
+    setRenderHint(QPainter::Antialiasing);
+}
 
+
+void ChartView::update(const QList<QPointF> &points)
+{
+    qDebug() << "Update";
     auto series = new QScatterSeries();
     series->setName("Random Points");
     series->append(points);
-
-    setRenderHint(QPainter::Antialiasing);
+    chart()->removeAllSeries();
     chart()->addSeries(series);
     chart()->createDefaultAxes();
 }
 
+
+void ChartView::clear()
+{
+    chart()->removeAllSeries();
+}
