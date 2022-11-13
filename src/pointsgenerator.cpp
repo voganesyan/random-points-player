@@ -23,8 +23,8 @@ void PointsGenerator::run()
             points << QPointF(x, y);
         }
         emit generated(points);
-
     }
+    is_paused = false;
     qDebug() << "Finish";
 }
 
