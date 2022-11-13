@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     // Create widgets
-    auto chart_view = new ChartView(MAX_VALUE);
-    auto play_button = new QPushButton();
-    auto pause_button = new QPushButton();
-    auto stop_button = new QPushButton();
+    chart_view = new ChartView(MAX_VALUE);
+    play_button = new QPushButton();
+    pause_button = new QPushButton();
+    stop_button = new QPushButton();
     play_button->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
     pause_button->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
     stop_button->setIcon(style()->standardIcon(QStyle::SP_MediaStop));

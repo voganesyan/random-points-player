@@ -2,6 +2,8 @@
 #include <QMainWindow>
 
 class PointsGenerator;
+class ChartView;
+class QPushButton;
 
 class MainWindow : public QMainWindow
 {
@@ -16,4 +18,8 @@ private slots:
 
 private:
     PointsGenerator *points_generator = nullptr;
+    ChartView *chart_view = nullptr;
+    QPushButton *play_button = nullptr;
+    QPushButton *pause_button = nullptr;
+    QPushButton *stop_button = nullptr;
 };
