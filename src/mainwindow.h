@@ -1,6 +1,8 @@
 #pragma once
 #include <QMainWindow>
 
+class PointsGenerator;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -11,4 +13,7 @@ private slots:
     void on_play_button_clicked();
     void on_pause_button_clicked();
     void on_stop_button_clicked();
+
+private:
+    PointsGenerator *points_generator = nullptr;
 };

@@ -8,6 +8,7 @@ find_package(Qt6 REQUIRED COMPONENTS Charts Core Gui)
 qt_add_executable(random-points-player
     mainwindow.cpp mainwindow.h
     chartview.cpp chartview.h
+    pointsgenerator.cpp pointsgenerator.h
     main.cpp
 )
 

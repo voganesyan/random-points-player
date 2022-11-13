@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "chartview.h"
+#include "pointsgenerator.h"
 #include <QPushButton>
 #include <QLayout>
 #include <QStyle>
@@ -33,22 +34,34 @@ MainWindow::MainWindow(QWidget *parent)
     auto main_widget = new QWidget();
     main_widget->setLayout(main_layout);
     setCentralWidget(main_widget);
+
+    // Create a points generating thread
+    points_generator = new PointsGenerator(this);
 }
 
 
 void MainWindow::on_play_button_clicked()
 {
     qDebug() << "Play";
+    if (points_generator->isRunning()) {
+        points_generator->resume();
+    } else {
+        points_generator->start();
+    }
 }
 
 
 void MainWindow::on_pause_button_clicked()
 {
     qDebug() << "Pause";
+    points_generator->pause();
 }
 
 
 void MainWindow::on_stop_button_clicked()
 {
     qDebug() << "Stop";
+    points_generator->quit();
+    points_generator->requestInterruption();
+    points_generator->wait();
 }
