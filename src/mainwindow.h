@@ -17,6 +17,8 @@ private slots:
     void on_stop_button_clicked();
 
 private:
+    void set_play_button_enabled(bool is_play_enabled);
+
     PointsGenerator *points_generator = nullptr;
     ChartView *chart_view = nullptr;
     QPushButton *play_button = nullptr;

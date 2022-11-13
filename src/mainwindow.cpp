@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pause_button, &QPushButton::clicked, this, &MainWindow::on_pause_button_clicked);
     connect(stop_button, &QPushButton::clicked, this, &MainWindow::on_stop_button_clicked);
     connect(stop_button, &QPushButton::clicked, chart_view, &ChartView::clear);
+    set_play_button_enabled(true);
 
     // Add widgets to the window
     auto buttons_layout = new QHBoxLayout();
@@ -52,6 +53,7 @@ void MainWindow::on_play_button_clicked()
     } else {
         points_generator->start();
     }
+    set_play_button_enabled(false);
 }
 
 
@@ -59,6 +61,7 @@ void MainWindow::on_pause_button_clicked()
 {
     qDebug() << "Pause";
     points_generator->pause();
+    set_play_button_enabled(true);
 }
 
 
@@ -68,4 +71,13 @@ void MainWindow::on_stop_button_clicked()
     points_generator->quit();
     points_generator->requestInterruption();
     points_generator->wait();
+    set_play_button_enabled(true);
+}
+
+
+void MainWindow::set_play_button_enabled(bool is_play_enabled)
+{
+    play_button->setEnabled(is_play_enabled);
+    pause_button->setDisabled(is_play_enabled);
+    stop_button->setDisabled(is_play_enabled);
 }
