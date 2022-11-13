@@ -44,6 +44,12 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 
+MainWindow::~MainWindow()
+{
+    stop_button->click();
+}
+
+
 void MainWindow::on_play_button_clicked()
 {
     qDebug() << "Play";
