@@ -13,6 +13,7 @@ ChartView::ChartView(int max_value, QWidget *parent) :
     axis_y->setMax(max_value);
     chart()->addAxis(axis_x, Qt::AlignBottom);
     chart()->addAxis(axis_y, Qt::AlignLeft);
+    chart()->legend()->hide();
 }
 
 
