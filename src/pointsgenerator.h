@@ -19,5 +19,5 @@ signals:
 
 protected:
     std::atomic_bool is_paused = false;
-    int max_value;
+    const int max_value;
 };

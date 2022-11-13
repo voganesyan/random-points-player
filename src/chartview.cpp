@@ -21,7 +21,6 @@ void ChartView::update(const QList<QPointF> &points)
 {
     qDebug() << "Update";
     auto series = new QScatterSeries();
-    series->setName("Random Points");
     series->append(points);
     chart()->removeAllSeries();
     chart()->addSeries(series);
