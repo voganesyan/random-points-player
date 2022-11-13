@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(play_button, &QPushButton::clicked, this, &MainWindow::on_play_button_clicked);
     connect(pause_button, &QPushButton::clicked, this, &MainWindow::on_pause_button_clicked);
     connect(stop_button, &QPushButton::clicked, this, &MainWindow::on_stop_button_clicked);
-    connect(stop_button, &QPushButton::clicked, chart_view, &ChartView::clear);
     set_play_button_enabled(true);
 
     // Add widgets to the window
@@ -72,6 +71,7 @@ void MainWindow::on_stop_button_clicked()
     points_generator->requestInterruption();
     points_generator->wait();
     set_play_button_enabled(true);
+    chart_view->clear();
 }
 
 
